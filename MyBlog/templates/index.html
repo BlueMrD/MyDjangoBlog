@@ -1,0 +1,110 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>蓝鲤歌蓝的个人博客</title>
+<meta name="keywords" content="个人博客,蓝鲤个人博客" />
+<meta name="description" content="蓝鲤歌蓝的个人博客，记载自己成长之路的点点滴滴。" />
+    {% block my_css %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/learn.css' %}" rel="stylesheet">
+<link href="{% static 'css/right.css' %}" rel="stylesheet">
+    {% endblock %}
+    <link href="{% static 'css/tbox.css' %}" rel="stylesheet">
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jss.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="{% static 'js/modernizr.js' %}"></script>
+<![endif]-->
+<script src="{% static 'js/scrollReveal.js' %}"></script>
+</head>
+<body>
+<header>
+  <div class="logo" data-scroll-reveal="enter right over 1s"><a style=" color:#FFFFFF; font-size:40px;">蓝鲤歌蓝的个人博客</a></div>
+  <nav class="topnav" data-scroll-reveal="enter bottom over 1s after 1s"><a href="{% url 'index' %}"><span>首页</span><span class="en">Home</span></a>
+  <a href="{% url 'about_me' %}"><span>关于我</span><span class="en">About</span></a>
+  <a href="{% url 'life' %}"><span>故事与酒</span><span class="en">Stories</span></a>
+  <a href="{% url 'learn' %}"><span>学无止境</span><span class="en">Learn</span></a>
+  <a href="{% url 'message' %}"><span>留言</span><span class="en">Saying</span></a>
+  </nav>
+</header>
+
+{% block content %}
+<article>
+	<div class="rnav">
+      <ul>
+        <li><a href="http://blog.csdn.net/mr_blued?t=1">CSDN博客</a></li>
+        <li><a href="http://bbs.fishc.com/forum.php">鱼C论坛</a></li>
+        <li><a href="{% static 'Myresume.pdf' %}">个人简历</a></li>
+        <li><a href="/jstt/web/">阅读书籍</a></li>
+        <li><a href="https://github.com/BlueMrD/">Github</a></li>
+        <li><a href="/jstt/t/">推荐工具</a></li>
+      </ul>
+    </div>
+	<h2 class="title_tj">
+		<p>首页<span>推荐</span></p>
+	</h2>
+  <div class="bloglist left">
+	{% for index in index_list %}
+  	<h3><a href="/life/picture/89.html" target="_blank">{{ index.title }}</a></h3>
+    <figure><a title="一年一度赏梅季" href="/life/picture/89.html" target="_blank"><img src="{{ MEDIA_URL }}{{ index.image }}"></a></figure>
+    <ul>
+      <p>{{ index.content }}</p>
+      <a title="/" href="/life/picture/89.html" target="_blank" class="readmore">阅读全文>></a>
+    </ul>
+    <p class="dateview"><span>{{ index.pub }}</span><span>作者：蓝鲤歌蓝</span></p>
+		{% endfor %}
+  </div>
+
+  <aside class="right">
+        <div class="news">
+            <h3 class="links">
+            <p><span>今日</span><span>天气</span></p>
+            </h3>
+            <div class="weather"><iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1&py=guangzhou"></iframe></div>
+
+		<div class="music">
+		<h3>
+		  <p><span>分享</span><span>音乐</span></p>
+		</h3>
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2120785460&auto=1&height=430"></iframe>
+	</div>
+    <h3 class="ph">
+      <p><span>最新</span><span>文章</span></p>
+    </h3>
+    <ul class="paih">
+        {% for index in index_list %}
+      	<li><a href="/life/picture/89.html">{{ index.title }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>  
+    <!-- Baidu Button BEGIN -->
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    <!-- Baidu Button END --> 
+</aside>
+</article>
+{% endblock %}
+<div id="tbox">
+	<a id="togbook" href="{% url 'message' %}"></a>
+	<a id="gotop" href="javascript:void(0)" style="display: block;"></a>
+</div>
+<footer> 
+<div class="dandelion">
+  <span class="smalldan"></span>
+  <span class="bigdan"></span>
+</div>
+<p>Design by DanceSmile <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+<script color="240,255,255" opacity='0.7' zIndex="-2" count="50"   src="{% static 'js/beauty.js' %}"></script>
+<script color="255,255,255" opacity='0.7' zIndex="-2" count="50"   src="{% static 'js/beauty.js' %}"></script>
+<script>
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		(function(){
+			window.scrollReveal = new scrollReveal({reset: true});
+		})();
+	};
+</script>
+</body>
+</html>

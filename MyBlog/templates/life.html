@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block my_css %}
+<link href="{% static 'css/life_base.css' %}" rel="stylesheet">
+<link href="{% static 'css/learn1.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<article>
+  <div class="container">
+    <h2 class="ctitle"><b>故事与酒</b> <span>{{ msg }}</span></h2>
+    <ul class="cbp_tmtimeline">
+        {% for life in life_list %}
+      <li>
+		<time class="cbp_tmtime"><span>{{ life.pub|date:"m-d" }}</span> <span>{{ life.pub|date:"Y" }}</span></time>
+        <div class="cbp_tmicon"></div>
+        <div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+		
+			<h2>{{ life.title }}</h2>
+			<p><span class="blogpic"><a href="/"><img src="{{ MEDIA_URL }}{{ life.image }}"></a></span>{{ life.content }}</p>
+			<a href="/" target="_blank" class="readmore">阅读全文&gt;&gt;</a> </div>
+			{% endfor %}
+      </li>
+    </ul>
+  </div>
+  </aside>
+</article>
+{% endblock %}
+
